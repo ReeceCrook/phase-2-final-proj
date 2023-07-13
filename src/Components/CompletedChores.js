@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../main.css"
 
-function CompletedChores({ completedChores, setCompletedChores }) {
+function CompletedChores({ completedChores, setCompletedChores, setFetchResult, setTrigger }) {
     
 
     useEffect(() => {
@@ -16,6 +16,22 @@ function CompletedChores({ completedChores, setCompletedChores }) {
           })
             .then((r) => r.json())
             .then(() => setCompletedChores(completedChores.filter(current => current.id != id)));
+    }
+
+    function resetHandler(chore) {
+        deleteHandler(chore.id)
+        fetch(`http://localhost:3000/uncompleted`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(chore)
+          })
+            .then((r) => r.json())
+            .then(() => {
+                setFetchResult((fetchResult) => fetchResult, chore)
+                setTrigger((trigger) => !trigger)
+            })
     }
 
     return (
@@ -35,6 +51,15 @@ function CompletedChores({ completedChores, setCompletedChores }) {
                                         deleteHandler(current.id)
                                     }
                                 }}>X</button>
+
+                                <button type="button" className="completeButton" onClick={() => {
+                                    const confirmBox = window.confirm("Are you sure you want to reset this Chore?")
+                                    if (confirmBox === true) {
+                                        resetHandler(current)
+                                    }
+                                }}>🔄</button>
+
+                                
 
                             </div>
                         </div>

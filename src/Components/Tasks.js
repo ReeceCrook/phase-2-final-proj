@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import css from "../main.css"
 
-function Tasks({ setFetchResult, fetchResult, filterValue }) {
+function Tasks({ setFetchResult, fetchResult }) {
 
 
 
-    useEffect(() => {
-        fetch("http://localhost:3000/uncompleted")
-            .then(res => res.json())
-            .then(data => setFetchResult(data))
-    }, [])
+
 
     function deleteHandler(id) {
         fetch(`http://localhost:3000/uncompleted/${id}`, {

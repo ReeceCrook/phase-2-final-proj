@@ -11,13 +11,14 @@ function App() {
   const [fetchResult, setFetchResult] = useState([])
   const [completedChores, setCompletedChores] = useState([])
   const [filterValue, setFilterValue] = useState("All")
+  const [trigger, setTrigger] = useState(true)
   
 
   useEffect(() => {
     fetch("http://localhost:3000/uncompleted")
         .then(res => res.json())
         .then(data => setFetchResult(data))
-}, [filterValue])
+}, [trigger || filterValue])
 
 
   return (
@@ -30,8 +31,14 @@ function App() {
         setCompletedChores={setCompletedChores} 
       />
       <Routes>
-        <Route path="/addchore" element={<AddChore />}/>
-        <Route path="/completedchores" element={<CompletedChores completedChores={completedChores} setCompletedChores={setCompletedChores} />} />
+        <Route path="/addchore" element={<AddChore />} />
+        <Route path="/completedchores" element={
+        <CompletedChores 
+          setTrigger={setTrigger}
+          setFetchResult={setFetchResult} 
+          completedChores={completedChores} 
+          setCompletedChores={setCompletedChores} 
+        />} />
         <Route exact path="/" element={<Tasks setFetchResult={setFetchResult} fetchResult={fetchResult} />} />
       </Routes>
     </div>
