@@ -1,0 +1,24 @@
+{
+  "uncompleted": [
+    {
+      "name": "Dishes",
+      "image": "https://www.thespruce.com/thmb/dkpb0Hbvy1VWE0suQn8NqWwSoUg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/order-for-dish-washing-1900439-10-4e8fe318734043228c4b71a2543f44f8.jpg",
+      "type": "Daily",
+      "id": 0
+    },
+    {
+      "name": "Mop",
+      "image": "https://mobileimages.lowes.com/productimages/35a7b2f1-9879-4b71-939b-2a48db4fae9d/00714976.jpg",
+      "type": "Monthly",
+      "id": 2
+    }
+  ],
+  "completed": [
+    {
+      "name": "Vacuum",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/how-to-clean-your-vacuum-cleaner-6405f66283ee4.jpg",
+      "type": "Weekly",
+      "id": 1
+    }
+  ]
+}
