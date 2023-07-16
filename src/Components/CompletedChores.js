@@ -45,14 +45,14 @@ function CompletedChores({ completedChores, setCompletedChores, setFetchResult, 
                             <div>
 
                                 <button type="button" className="deleteButton" onClick={() => {
-                                    const confirmBox = window.confirm("Are you sure you want to delete this Chore?")
+                                    const confirmBox = window.confirm("Are you sure you want to delete this Task?")
                                     if (confirmBox === true) {
                                         deleteHandler(current.id)
                                     }
                                 }}>X</button>
 
                                 <button type="button" className="completeButton" onClick={() => {
-                                    const confirmBox = window.confirm("Are you sure you want to reset this Chore?")
+                                    const confirmBox = window.confirm("Are you sure you want to reset this Task?")
                                     if (confirmBox === true) {
                                         resetHandler(current)
                                     }

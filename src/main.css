@@ -1,21 +1,38 @@
 .App {
-  align-items: center;
   text-align: center;
 }
 
-.mappedResults {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  padding: 25px;
-  place-items: center;
+.navLinks {
+  width: 80px;
+  height: 40px;
+  padding: 12px;
+  margin: 5px;
+  background: blue;
+  color: white;
+  text-decoration: none;
+  align-self: center;
+}
 
+input {
+  padding: 2px;
+  margin: 5px;
+}
+
+.mappedResults {
+  display: flex;
+  padding: 25px;
+  float: left;
+}
+
+.innerMappedResults {
+  outline: auto;
+  padding: 10px;
 }
 
 .img {
   padding: 15px;
   max-width: 300px;
-  max-height: 300px;
+  max-height: 200px;
 }
 
 .deleteButton {
@@ -28,42 +45,14 @@
   color: green;
 }
 
-.innerMappedResults {
-  outline: auto;
-  padding: 10px;
-}
-
 .filterDiv {
   margin: 20px;
 }
 
-.tabs {
-  padding: 10px;
-  margin-left: 100px;
-}
-
-input {
-  padding: 2px;
-  margin: 5px;
-}
-
-.navLinks {
-  width: 80px;
-  height: 40px;
-  padding: 12px;
-  margin: 5px;
-  background: blue;
-  text-decoration: none;
-  color: white;
-  align-self: center;
-}
-
 .completedChore {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  display: flex;
   padding: 25px;
-  place-items: center;
+  float: left;
 }
 
 .innerCompletedChore {

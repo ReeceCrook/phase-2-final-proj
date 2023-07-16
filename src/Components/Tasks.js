@@ -41,7 +41,7 @@ function Tasks({ setFetchResult, fetchResult }) {
                             <div>
 
                                 <button type="button" className="deleteButton" onClick={() => {
-                                    const confirmBox = window.confirm("Are you sure you want to delete this Chore?")
+                                    const confirmBox = window.confirm("Are you sure you want to delete this Task?")
                                     if (confirmBox === true) {
                                         deleteHandler(current.id)
                                     }
