@@ -10,7 +10,6 @@ import CompletedChores from "./CompletedChores";
 function App() {
   const [fetchResult, setFetchResult] = useState([])
   const [completedChores, setCompletedChores] = useState([])
-  const [filterValue, setFilterValue] = useState("All")
   const [trigger, setTrigger] = useState(true)
   
 
@@ -18,15 +17,14 @@ function App() {
     fetch("http://localhost:3000/uncompleted")
         .then(res => res.json())
         .then(data => setFetchResult(data))
-}, [trigger || filterValue])
+}, [trigger])
 
 
   return (
     <div className="App">
       <NavBar />
       <Filter 
-        filterValue={filterValue} 
-        setFilterValue={setFilterValue} 
+        setTrigger={setTrigger}
         setFetchResult={setFetchResult} 
         setCompletedChores={setCompletedChores} 
       />

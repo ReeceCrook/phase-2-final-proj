@@ -3,7 +3,6 @@ import "../main.css"
 
 function CompletedChores({ completedChores, setCompletedChores, setFetchResult, setTrigger }) {
     
-
     useEffect(() => {
         fetch("http://localhost:3000/completed")
             .then(res => res.json())

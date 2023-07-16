@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-function Filter({ setFetchResult, setCompletedChores, filterValue, setFilterValue }) {
+function Filter({ setFetchResult, setCompletedChores, setTrigger }) {
+
+  const [filterValue, setFilterValue] = useState("All")
 
 
     useEffect(() => {
@@ -9,7 +11,8 @@ function Filter({ setFetchResult, setCompletedChores, filterValue, setFilterValu
                 setFetchResult((result) => result.filter(current => current.type === filterValue))
                 setCompletedChores((chores) => chores.filter(current => current.type === filterValue))
             }, 100)
-        }
+            setTrigger((trigger) => !trigger)
+        } else (setTrigger((trigger) => !trigger))
 
     }, [filterValue])
    
