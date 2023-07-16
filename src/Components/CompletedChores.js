@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../main.css"
 
 function CompletedChores({ completedChores, setCompletedChores, setFetchResult, setTrigger }) {

@@ -29,8 +29,8 @@ function App() {
         setCompletedChores={setCompletedChores} 
       />
       <Routes>
-        <Route path="/addchore" element={<AddChore />} />
-        <Route path="/completedchores" element={
+        <Route path="/addTask" element={<AddChore />} />
+        <Route path="/completedTasks" element={
         <CompletedChores 
           setTrigger={setTrigger}
           setFetchResult={setFetchResult} 

@@ -13,18 +13,18 @@ function NavBar() {
                 Home
             </NavLink>
             <NavLink
-                to="/addchore"
+                to="/addTask"
                 exact="true"
                 className="navLinks"
             >
-                Add a new Chore
+                Add New Task
             </NavLink>
             <NavLink
-                to="/completedchores"
+                to="/completedTasks"
                 exact="true"
                 className="navLinks"
             >
-                Completed Chores
+                Completed Tasks
             </NavLink>
             </div>
       );

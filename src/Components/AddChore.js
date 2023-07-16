@@ -29,23 +29,23 @@ function AddChore() {
     
     return (
         <form id="form" onSubmit={(e) => handleSubmit(e)}>
-            <h1>Fill out new chore:</h1>
+            <h1>Fill out new Task:</h1>
             <div className="addChoreDiv" >
 
-                <label  htmlFor="name"> Name of Chore: </label>
+                <label  htmlFor="name"> Name of Task: </label>
                 <input type="text" id="name" value={formData.name} onChange={handleChange} /> <br />
 
-                <label  htmlFor="image"> Image of Chore: </label>
+                <label  htmlFor="image"> Image of Task: </label>
                 <input type="text" id="image" value={formData.image} onChange={handleChange} /> <br />
 
-                <label  htmlFor="type"> Type of Chore: </label>
+                <label  htmlFor="type"> Type of Task: </label>
                 <select id="type" value={formData.type} onChange={handleChange}>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
                     <option value="Monthly">Monthly</option>
                 </select> <br />
 
-                <input type="submit" value="Add New Chore" className="submitButton" />
+                <input type="submit" value="Submit New Task" className="submitButton" />
             </div> 
         </form>
     )

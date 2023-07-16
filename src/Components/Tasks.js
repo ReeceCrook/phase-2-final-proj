@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
-import css from "../main.css"
+import React from "react";
+import "../main.css"
 
 function Tasks({ setFetchResult, fetchResult }) {
-
-
-
-
 
     function deleteHandler(id) {
         fetch(`http://localhost:3000/uncompleted/${id}`, {
