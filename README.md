@@ -16,7 +16,8 @@ moves the task to the `Completed Tasks` tab to help track what you've done so fa
 remove the task permanently. When a task is completed the `✔` is relaced with a `🔄` button that moves
 the task back to the `Home` tab. The `X` still permanently deletes the task.
 
->For a more detailed explenation please watch this video: [link]()
+> For a more detailed explenation please watch this video: [link](https://youtu.be/XSfizF8v3Qk)
 
 ## Credits
 
+All images used are from [ShudderStock](https://www.shutterstock.com/)

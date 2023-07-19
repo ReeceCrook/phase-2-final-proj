@@ -4,12 +4,12 @@ import "../main.css"
 import Filter from "./Filter";
 import NavBar from "./NavBar";
 import Tasks from "./Tasks";
-import AddChore from "./AddChore";
-import CompletedChores from "./CompletedChores";
+import AddTask from "./AddTask";
+import CompletedTasks from "./CompletedTasks";
 
 function App() {
   const [fetchResult, setFetchResult] = useState([])
-  const [completedChores, setCompletedChores] = useState([])
+  const [completedTasks, setCompletedTasks] = useState([])
   const [trigger, setTrigger] = useState(true)
   
 
@@ -26,16 +26,16 @@ function App() {
       <Filter 
         setTrigger={setTrigger}
         setFetchResult={setFetchResult} 
-        setCompletedChores={setCompletedChores} 
+        setCompletedTasks={setCompletedTasks} 
       />
       <Routes>
-        <Route path="/addTask" element={<AddChore />} />
+        <Route path="/addTask" element={<AddTask setTrigger={setTrigger} />} />
         <Route path="/completedTasks" element={
-        <CompletedChores 
+        <CompletedTasks 
           setTrigger={setTrigger}
           setFetchResult={setFetchResult} 
-          completedChores={completedChores} 
-          setCompletedChores={setCompletedChores} 
+          completedTasks={completedTasks} 
+          setCompletedTasks={setCompletedTasks} 
         />} />
         <Route exact path="/" element={<Tasks setFetchResult={setFetchResult} fetchResult={fetchResult} />} />
       </Routes>

@@ -1,23 +1,42 @@
 {
   "uncompleted": [
     {
-      "name": "Dishes",
-      "image": "https://www.thespruce.com/thmb/dkpb0Hbvy1VWE0suQn8NqWwSoUg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/order-for-dish-washing-1900439-10-4e8fe318734043228c4b71a2543f44f8.jpg",
-      "type": "Daily",
-      "id": 0
-    },
-    {
-      "name": "Mop",
-      "image": "https://mobileimages.lowes.com/productimages/35a7b2f1-9879-4b71-939b-2a48db4fae9d/00714976.jpg",
+      "name": "Vacuum",
+      "image": "https://image.shutterstock.com/z/stock-photo-young-woman-using-a-vacuum-cleaner-while-cleaning-carpet-in-the-house-739359847.jpg",
       "type": "Monthly",
       "id": 2
     },
     {
-      "name": "Vacuum",
-      "image": "https://hips.hearstapps.com/hmg-prod/images/how-to-clean-your-vacuum-cleaner-6405f66283ee4.jpg",
+      "name": "Take out Trash",
+      "image": "https://image.shutterstock.com/z/stock-photo-hand-holding-garbage-black-bag-putting-in-to-trash-1265319334.jpg",
       "type": "Weekly",
-      "id": 1
+      "id": 3
+    },
+    {
+      "name": "Walk Doggo",
+      "image": "https://image.shutterstock.com/z/stock-photo-dog-waiting-for-walk-labrador-retriever-standing-with-leash-in-mouth-against-door-of-house-1441002188.jpg",
+      "type": "Daily",
+      "id": 4
+    },
+    {
+      "name": "Do Laundry",
+      "image": "https://image.shutterstock.com/z/stock-photo-wicker-basket-with-dirty-laundry-indoors-space-for-text-1916042374.jpg",
+      "type": "Weekly",
+      "id": 5
+    },
+    {
+      "name": "Do Homework",
+      "image": "https://image.shutterstock.com/image-vector/child-table-school-supplies-doing-260nw-1469895359.jpg",
+      "type": "Daily",
+      "id": 6
     }
   ],
-  "completed": []
+  "completed": [
+    {
+      "name": "Do Dishes",
+      "image": "https://image.shutterstock.com/z/stock-photo-different-clean-plates-in-dish-drying-rack-on-kitchen-counter-1139381582.jpg",
+      "type": "Daily",
+      "id": 1
+    }
+  ]
 }

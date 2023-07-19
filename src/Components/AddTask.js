@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../main.css"
 
-function AddChore() {
+function AddChore({ setTrigger }) {
 
     const [formData, setFormData] = useState({
         "name": "",
@@ -24,11 +24,13 @@ function AddChore() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(formData)
-        });
+        })
+            .then(() => setTrigger((trigger) => !trigger))
+            .then(() => window.confirm("New Task Added"))
     }
     
     return (
-        <form id="form" onSubmit={(e) => handleSubmit(e)}>
+        <form id="form" onSubmit={e => handleSubmit(e)}>
             <h1>Fill out new Task:</h1>
             <div className="addChoreDiv" >
 

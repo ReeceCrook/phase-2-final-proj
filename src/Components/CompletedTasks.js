@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import "../main.css"
 
-function CompletedChores({ completedChores, setCompletedChores, setFetchResult, setTrigger }) {
+function CompletedChores({ completedTasks, setCompletedTasks, setFetchResult, setTrigger }) {
     
     useEffect(() => {
         fetch("http://localhost:3000/completed")
             .then(res => res.json())
-            .then(data => setCompletedChores(data))
+            .then(data => setCompletedTasks(data))
     }, [])
 
     function deleteHandler(id) {
@@ -14,7 +14,7 @@ function CompletedChores({ completedChores, setCompletedChores, setFetchResult, 
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => setCompletedChores(completedChores.filter(current => current.id != id)));
+            .then(() => setCompletedTasks(completedTasks.filter(current => current.id != id)));
     }
 
     function resetHandler(chore) {
@@ -35,7 +35,7 @@ function CompletedChores({ completedChores, setCompletedChores, setFetchResult, 
 
     return (
         <div>
-            {completedChores.map(current => {
+            {completedTasks.map(current => {
                 return (
                     <div key={current.id} className="completedChore">
                         <div className="innerCompletedChore">
@@ -57,8 +57,6 @@ function CompletedChores({ completedChores, setCompletedChores, setFetchResult, 
                                         resetHandler(current)
                                     }
                                 }}>🔄</button>
-
-                                
 
                             </div>
                         </div>
