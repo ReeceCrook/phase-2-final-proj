@@ -12,12 +12,12 @@ function App() {
   const [completedTasks, setCompletedTasks] = useState([])
   const [trigger, setTrigger] = useState(true)
   
-  fetch("http://localhost:3000/tasks")
-    .then(res => res.json())
-    .then(data => setFetchResult(data))
 
-
-
+  useEffect(() => {
+    fetch("http://localhost:3000/tasks")
+        .then(res => res.json())
+        .then(data => setFetchResult(data))
+  }, [trigger])
 
 
   return (

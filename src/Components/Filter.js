@@ -1,17 +1,20 @@
 import React from "react";
 
 function Filter({ setFetchResult, setTrigger, fetchResult }) {  
-    let filteredResults = [...fetchResult]
+
 
     function handleChange(value) {
-       
-        console.log(fetchResult)
-        setTrigger((trigger) => !trigger)
+        console.log("")
 
-        setTimeout(() => {
-            setFetchResult(filteredResults.filter(current => current.type === value))
-        }, 100)
+        if(value !== "All") {
+            setTrigger((trigger) => !trigger)
+            setTimeout(() => {
+                setFetchResult((result) => result.filter(current => current.type === value))
+            }, 100)
             
+        } else {
+            setTrigger((trigger) => !trigger)
+        }
         
     }
 
