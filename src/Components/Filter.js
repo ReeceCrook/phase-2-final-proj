@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-function Filter({ setFetchResult, setCompletedTasks, setTrigger }) {
+function Filter({ setFetchResult, setTrigger, fetchResult }) {  
+    let filteredResults = [...fetchResult]
 
-  const [filterValue, setFilterValue] = useState("All")
+    function handleChange(value) {
+       
+        console.log(fetchResult)
+        setTrigger((trigger) => !trigger)
 
+        setTimeout(() => {
+            setFetchResult(filteredResults.filter(current => current.type === value))
+        }, 100)
+            
+        
+    }
 
-    useEffect(() => {
-        if(filterValue !== "All") {
-            setTimeout(() => {
-                setFetchResult((result) => result.filter(current => current.type === filterValue))
-                setCompletedTasks((tasks) => tasks.filter(current => current.type === filterValue))
-            }, 100)
-            setTrigger((trigger) => !trigger)
-        } else (setTrigger((trigger) => !trigger))
-
-    }, [filterValue])
-   
+    
     return (
         <div className="filterDiv">
             <label htmlFor="filter"> Filter by: </label>
-            <select id="filter" value={filterValue} onChange={e => setFilterValue(e.target.value)}>
+            <select id="filter" onChange={e => handleChange(e.target.value)}>
                 <option value="All">All</option>
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>

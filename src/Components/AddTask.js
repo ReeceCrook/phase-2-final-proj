@@ -6,6 +6,7 @@ function AddChore({ setTrigger }) {
     const [formData, setFormData] = useState({
         "name": "",
         "image": "",
+        "completed": false,
         "type": "Daily"
     })
 
@@ -18,7 +19,7 @@ function AddChore({ setTrigger }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:3000/uncompleted", {
+        fetch("http://localhost:3000/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +31,7 @@ function AddChore({ setTrigger }) {
     }
     
     return (
-        <form id="form" onSubmit={e => handleSubmit(e)}>
+        <form id="form" onSubmit={(e) => handleSubmit(e)}>
             <h1>Fill out new Task:</h1>
             <div className="addChoreDiv" >
 

@@ -12,12 +12,12 @@ function App() {
   const [completedTasks, setCompletedTasks] = useState([])
   const [trigger, setTrigger] = useState(true)
   
+  fetch("http://localhost:3000/tasks")
+    .then(res => res.json())
+    .then(data => setFetchResult(data))
 
-  useEffect(() => {
-    fetch("http://localhost:3000/uncompleted")
-        .then(res => res.json())
-        .then(data => setFetchResult(data))
-}, [trigger])
+
+
 
 
   return (
@@ -25,6 +25,7 @@ function App() {
       <NavBar />
       <Filter 
         setTrigger={setTrigger}
+        fetchResult={fetchResult}
         setFetchResult={setFetchResult} 
         setCompletedTasks={setCompletedTasks} 
       />
@@ -33,11 +34,12 @@ function App() {
         <Route path="/completedTasks" element={
         <CompletedTasks 
           setTrigger={setTrigger}
+          fetchResult={fetchResult}
           setFetchResult={setFetchResult} 
           completedTasks={completedTasks} 
           setCompletedTasks={setCompletedTasks} 
         />} />
-        <Route exact path="/" element={<Tasks setFetchResult={setFetchResult} fetchResult={fetchResult} />} />
+        <Route exact path="/" element={<Tasks setTrigger={setTrigger} setFetchResult={setFetchResult} fetchResult={fetchResult} setCompletedTasks={setCompletedTasks}  />} />
       </Routes>
     </div>
   );

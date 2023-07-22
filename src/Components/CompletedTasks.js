@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../main.css"
 
-function CompletedChores({ completedTasks, setCompletedTasks, setFetchResult, setTrigger }) {
+function CompletedChores({ completedTasks, setCompletedTasks, fetchResult, setFetchResult, setTrigger }) {
     
-    useEffect(() => {
-        fetch("http://localhost:3000/completed")
-            .then(res => res.json())
-            .then(data => setCompletedTasks(data))
-    }, [])
+
 
     function deleteHandler(id) {
         fetch(`http://localhost:3000/completed/${id}`, {
@@ -35,33 +31,37 @@ function CompletedChores({ completedTasks, setCompletedTasks, setFetchResult, se
 
     return (
         <div>
-            {completedTasks.map(current => {
-                return (
-                    <div key={current.id} className="completedChore">
-                        <div className="innerCompletedChore">
-                            <h3>{current.name}</h3>
-                            <img className="img" src={current.image} />
-                            <li>{current.type}</li>
-                            <div>
+            {
+            fetchResult.map(current => {
+                if(current.completed === true){
+                    return (
+                        <div key={current.id} className="completedChore">
+                            <div className="innerCompletedChore">
+                                <h3>{current.name}</h3>
+                                <img className="img" src={current.image} />
+                                <li>{current.type}</li>
+                                <div>
 
-                                <button type="button" className="deleteButton" onClick={() => {
-                                    const confirmBox = window.confirm("Are you sure you want to delete this Task?")
-                                    if (confirmBox === true) {
-                                        deleteHandler(current.id)
-                                    }
-                                }}>X</button>
+                                    <button type="button" className="deleteButton" onClick={() => {
+                                        const confirmBox = window.confirm("Are you sure you want to delete this Task?")
+                                        if (confirmBox === true) {
+                                            deleteHandler(current.id)
+                                        }
+                                    }}>X</button>
 
-                                <button type="button" className="completeButton" onClick={() => {
-                                    const confirmBox = window.confirm("Are you sure you want to reset this Task?")
-                                    if (confirmBox === true) {
-                                        resetHandler(current)
-                                    }
-                                }}>🔄</button>
+                                    <button type="button" className="completeButton" onClick={() => {
+                                        const confirmBox = window.confirm("Are you sure you want to reset this Task?")
+                                        if (confirmBox === true) {
+                                            resetHandler(current)
+                                        }
+                                    }}>🔄</button>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
+                
             })}
         </div>
     )
