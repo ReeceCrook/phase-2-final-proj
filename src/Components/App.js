@@ -11,12 +11,14 @@ function App() {
   const [fetchResult, setFetchResult] = useState([])
   const [completedTasks, setCompletedTasks] = useState([])
   const [trigger, setTrigger] = useState(true)
+  const [filterValue, setFilterValue] = useState("All")
   
 
   useEffect(() => {
     fetch("http://localhost:3000/tasks")
         .then(res => res.json())
         .then(data => setFetchResult(data))
+        .catch(event => console.log("Exception caught: ", event))
   }, [trigger])
 
 
@@ -27,6 +29,7 @@ function App() {
         setTrigger={setTrigger}
         fetchResult={fetchResult}
         setFetchResult={setFetchResult} 
+        setFilterValue={setFilterValue}
         setCompletedTasks={setCompletedTasks} 
       />
       <Routes>
