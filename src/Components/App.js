@@ -10,15 +10,14 @@ import CompletedTasks from "./CompletedTasks";
 function App() {
   const [fetchResult, setFetchResult] = useState([])
   const [filterValue, setFilterValue] = useState("All")
-  
+  const [trigger, setTrigger] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:3000/tasks")
         .then(res => res.json())
         .then(data => setFetchResult(data))
         .catch(event => console.log("Exception caught: ", event))
-  }, [])
-
+  }, [trigger])
 
   return (
     <div className="App">
@@ -29,14 +28,15 @@ function App() {
         setFilterValue={setFilterValue}
       />
       <Routes>
-        <Route path="/addTask" element={<AddTask />} />
+        <Route path="/addTask" element={<AddTask setTrigger={setTrigger} />} />
         <Route path="/completedTasks" element={
           <CompletedTasks 
+            setTrigger={setTrigger}
             filterValue={filterValue}
             fetchResult={fetchResult}
             setFetchResult={setFetchResult} 
           />} />
-        <Route exact path="/" element={<Tasks setFetchResult={setFetchResult} fetchResult={fetchResult} filterValue={filterValue} />} />
+        <Route exact path="/" element={<Tasks fetchResult={fetchResult} filterValue={filterValue} setTrigger={setTrigger} />} />
       </Routes>
     </div>
   );

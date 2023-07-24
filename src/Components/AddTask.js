@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../main.css"
 
-function AddChore() {
+function AddChore({ setTrigger }) {
 
     const [formData, setFormData] = useState({
         "name": "",
@@ -27,6 +27,7 @@ function AddChore() {
             body: JSON.stringify(formData)
         })
             .then(() => window.confirm("New Task Added"))
+            .then(() => setTrigger((trigger) => !trigger))
             .catch(event => console.log("Exception caught: ", event))
     }
     

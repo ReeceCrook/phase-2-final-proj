@@ -1,14 +1,16 @@
 import React from "react";
 import "../main.css"
 
-function CompletedChores({ fetchResult, filterValue }) {
+function CompletedChores({ fetchResult, filterValue, setTrigger }) {
 
     function deleteHandler(id) {
         fetch(`http://localhost:3000/tasks/${id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => fetchResult.filter(current => current.id != id));
+            .then(() => fetchResult.filter(current => current.id != id))
+            .then(() => setTrigger((trigger) => !trigger))
+            .catch(event => console.log("Exception caught: ", event))
     }
 
     function resetHandler(chore) {
@@ -22,6 +24,7 @@ function CompletedChores({ fetchResult, filterValue }) {
             })
           })
             .then((r) => r.json())
+            .then(() => setTrigger((trigger) => !trigger))
             .catch(event => console.log("Exception caught: ", event))
     }
 
