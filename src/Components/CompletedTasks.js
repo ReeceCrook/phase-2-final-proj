@@ -1,58 +1,53 @@
 import React from "react";
 import "../main.css"
 
-function CompletedChores({ completedTasks, setCompletedTasks, fetchResult, setFetchResult, setTrigger }) {
-    
-
+function CompletedChores({ fetchResult, filterValue }) {
 
     function deleteHandler(id) {
-        fetch(`http://localhost:3000/completed/${id}`, {
+        fetch(`http://localhost:3000/tasks/${id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => setCompletedTasks(completedTasks.filter(current => current.id != id)));
+            .then(() => fetchResult.filter(current => current.id != id));
     }
 
     function resetHandler(chore) {
-        deleteHandler(chore.id)
-        fetch(`http://localhost:3000/uncompleted`, {
-            method: "POST",
+        fetch(`http://localhost:3000/tasks/${chore.id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(chore)
+            body: JSON.stringify({
+                "completed": false
+            })
           })
             .then((r) => r.json())
-            .then(() => {
-                setFetchResult((fetchResult) => fetchResult, chore)
-                setTrigger((trigger) => !trigger)
-            })
+            .catch(event => console.log("Exception caught: ", event))
     }
 
     return (
         <div>
-            {
-            fetchResult.map(current => {
-                if(current.completed === true){
+            {fetchResult.filter(current => filterValue !== "All" ? current.type === filterValue: current).map(filteredCurrent => {
+                if(filteredCurrent.completed === true){
                     return (
-                        <div key={current.id} className="completedChore">
+                        <div key={filteredCurrent.id} className="completedChore">
                             <div className="innerCompletedChore">
-                                <h3>{current.name}</h3>
-                                <img className="img" src={current.image} />
-                                <li>{current.type}</li>
+                                <h3>{filteredCurrent.name}</h3>
+                                <img className="img" src={filteredCurrent.image} />
+                                <li>{filteredCurrent.type}</li>
                                 <div>
 
                                     <button type="button" className="deleteButton" onClick={() => {
                                         const confirmBox = window.confirm("Are you sure you want to delete this Task?")
                                         if (confirmBox === true) {
-                                            deleteHandler(current.id)
+                                            deleteHandler(filteredCurrent.id)
                                         }
                                     }}>X</button>
 
                                     <button type="button" className="completeButton" onClick={() => {
                                         const confirmBox = window.confirm("Are you sure you want to reset this Task?")
                                         if (confirmBox === true) {
-                                            resetHandler(current)
+                                            resetHandler(filteredCurrent)
                                         }
                                     }}>🔄</button>
 
@@ -61,7 +56,6 @@ function CompletedChores({ completedTasks, setCompletedTasks, fetchResult, setFe
                         </div>
                     )
                 }
-                
             })}
         </div>
     )

@@ -26,8 +26,8 @@ function AddChore() {
             },
             body: JSON.stringify(formData)
         })
-            .then(() => setTrigger((trigger) => !trigger))
             .then(() => window.confirm("New Task Added"))
+            .catch(event => console.log("Exception caught: ", event))
     }
     
     return (
