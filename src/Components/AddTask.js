@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../main.css"
 
-function AddChore({ setTrigger }) {
+function AddChore({ fetchResult, setFetchResult }) {
 
     const [formData, setFormData] = useState({
         "name": "",
@@ -16,7 +16,6 @@ function AddChore({ setTrigger }) {
             [e.target.id]: e.target.value,
         })
     }
-
     function handleSubmit(e) {
         e.preventDefault()
         fetch("http://localhost:3000/tasks", {
@@ -26,8 +25,10 @@ function AddChore({ setTrigger }) {
             },
             body: JSON.stringify(formData)
         })
+            
+            .then(r => r.json())
+            .then(data => setFetchResult([...fetchResult, data]))
             .then(() => window.confirm("New Task Added"))
-            .then(() => setTrigger((trigger) => !trigger))
             .catch(event => console.log("Exception caught: ", event))
     }
     

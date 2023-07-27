@@ -3,7 +3,7 @@
     {
       "name": "Take out Trash",
       "image": "https://image.shutterstock.com/z/stock-photo-hand-holding-garbage-black-bag-putting-in-to-trash-1265319334.jpg",
-      "completed": true,
+      "completed": false,
       "type": "Weekly",
       "id": 0
     },
@@ -38,9 +38,16 @@
     {
       "name": "Mop",
       "image": "https://image.shutterstock.com/z/stock-photo-cropped-image-of-beautiful-young-woman-in-protective-gloves-using-a-flat-wet-mop-while-cleaning-510917479.jpg",
-      "completed": false,
+      "completed": true,
       "type": "Monthly",
       "id": 6
+    },
+    {
+      "name": "Clean Fish Tank",
+      "image": "https://image.shutterstock.com/z/stock-photo-a-man-cleaning-aquarium-with-green-sponge-1719491668.jpg",
+      "completed": false,
+      "type": "Monthly",
+      "id": 7
     }
   ]
 }

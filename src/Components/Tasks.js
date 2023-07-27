@@ -1,15 +1,14 @@
 import React from "react";
 import "../main.css"
 
-function Tasks({ setTrigger, fetchResult, filterValue }) {
+function Tasks({ fetchResult, filterValue, setFetchResult }) {
 
     function deleteHandler(id) {
         fetch(`http://localhost:3000/tasks/${id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => fetchResult.filter(current => current.id != id))
-            .then(() => setTrigger((trigger) => !trigger))
+            .then(() => setFetchResult([...fetchResult.filter(current => current.id !== id)]))
             .catch(event => console.log("Exception caught: ", event))
     }
 
@@ -23,8 +22,8 @@ function Tasks({ setTrigger, fetchResult, filterValue }) {
                 'Content-type': 'application/json',
             },
           })
-            .then((r) => r.json())
-            .then(() => setTrigger((trigger) => !trigger))
+            .then(res => res.json())
+            .then(res => setFetchResult([...fetchResult.filter(current => current.id !== res.id), res]))
             .catch(event => console.log("Exception caught: ", event))
     }
  
