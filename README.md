@@ -1,6 +1,6 @@
 # My To-Do App ReadMe
 
-Welcome to my To-Do app, a simple app thats made to help keep your day a bit more organised.
+Welcome to my To-Do app, a simple app thats made to help keep your day a bit more organized.
 
 ## Description
 
